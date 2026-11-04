@@ -1,0 +1,17 @@
+/* Forms + auth pages */
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.auth__art{background:linear-gradient(135deg,var(--orange),var(--cream))}
+.auth__form{display:grid;place-content:center;padding:calc(var(--nav-h) + 30px) 8% 40px}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-weight:700;margin-bottom:.3rem}
+.field input,.field select,.field textarea{width:100%;padding:.9rem 1rem;border:2px solid var(--grey);border-radius:14px;font:inherit;background:#fff}
+.field input[aria-invalid=true]{border-color:#d62828}
+.err{color:#d62828;font-size:.85rem;min-height:1.1em}
+.pw{position:relative}.pw button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;font-weight:700;color:var(--orange)}
+.status{margin-top:1rem;font-weight:700}
+@media(max-width:800px){.auth{grid-template-columns:1fr}.auth__art{display:none}}
+/* 404 */
+.nf{min-height:100vh;display:grid;place-content:center;text-align:center;background:linear-gradient(135deg,var(--cream),var(--orange));overflow:hidden}
+.nf h1{font-size:clamp(7rem,28vw,22rem);color:#fff}
+.nf .btns{display:flex;gap:1rem;justify-content:center;margin-top:1.5rem}
+.nf h1{color:var(--navy)}

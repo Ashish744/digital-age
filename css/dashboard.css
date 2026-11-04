@@ -1,0 +1,95 @@
+/* ===== Dashboards (admin + client) — light, compact ===== */
+body.dash{background:#F7F5F0;--nav-h:60px}
+.dnav{position:fixed;inset:0 0 auto 0;height:60px;background:#fff;box-shadow:0 1px 0 var(--grey);z-index:60;display:flex;align-items:center;justify-content:space-between;padding:0 1rem}
+.dnav .logo img{height:36px;max-width:150px;object-fit:contain}
+.dnav .left{display:flex;align-items:center;gap:.6rem}
+.menu-btn{display:none;background:none;border:0;font-size:1.5rem;cursor:pointer;min-width:44px;min-height:44px}
+.prof{position:relative}.prof>button{display:flex;align-items:center;gap:.5rem;background:none;border:0;cursor:pointer;font:inherit;min-height:44px}
+.prof img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.drop{position:absolute;right:0;top:110%;background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(24,33,58,.15);min-width:180px;padding:.4rem;display:none}
+.drop.open{display:block}.drop a{display:block;padding:.6rem .8rem;border-radius:10px}.drop a:hover{background:var(--cream)}
+.side{position:fixed;top:60px;bottom:0;left:0;width:230px;background:var(--navy);padding:1rem;overflow:auto;z-index:50;transition:transform .35s}
+.side button{display:block;width:100%;text-align:left;padding:.75rem 1rem;margin-bottom:.3rem;border:0;border-radius:12px;background:none;color:#cfd3e6;font:inherit;cursor:pointer}
+.side button:hover{background:rgba(255,255,255,.08)}.side button.on{background:var(--orange);color:#fff}
+.dmain{margin:60px 0 0 230px;padding:1.5rem;min-height:calc(100vh - 60px)}
+.dash.client .dmain{max-width:none}
+@media(max-width:900px){.menu-btn{display:block}.side{transform:translateX(-100%)}.side.open{transform:none}.dmain{margin-left:0}}
+.view{display:none}.view.on{display:block}
+.demo{display:inline-block;background:var(--orange);padding:.2rem .7rem;border-radius:99px;font-size:.75rem;font-weight:700}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1rem 0}
+.box{background:#fff;border-radius:20px;padding:1.2rem}.box h3{font-size:1.1rem;margin-bottom:.6rem}
+.stat b{font:800 2.2rem var(--display);display:block}
+.row{display:grid;grid-template-columns:2fr 1fr;gap:1rem}@media(max-width:900px){.row{grid-template-columns:1fr}}
+.chart{display:flex;align-items:flex-end;gap:.5rem;height:200px;padding-top:1rem}
+.chart i{flex:1;background:var(--cream);border-radius:8px 8px 0 0;position:relative;cursor:pointer;transition:background .2s;min-height:4px}
+.chart i:hover,.chart i.hot{background:var(--orange)}.chart i:hover::after{content:attr(data-t);position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:2px 8px;border-radius:8px;font-size:.75rem;font-style:normal;white-space:nowrap}
+.prog{height:8px;background:var(--grey);border-radius:9px;overflow:hidden;margin:.4rem 0 1rem}.prog b{display:block;height:100%;width:0;background:var(--orange);border-radius:9px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.4rem}
+.s-Active{background:#18213A}.s-Pending{background:var(--orange)}.s-Done,.s-Paid{background:rgba(24,33,58,.45)}.s-Overdue{background:var(--orange);box-shadow:0 0 0 3px rgba(255,90,31,.3)}
+.tools{display:flex;gap:.6rem;flex-wrap:wrap;margin:.8rem 0}.tools input,.tools select{padding:.6rem 1rem;border:2px solid var(--grey);border-radius:99px;font:inherit}
+.records{display:grid;gap:.9rem;min-width:0}
+.projects-records,.clients-records,.team-records,.services-records{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.messages-records{grid-template-columns:1fr}
+.invoices-records{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.record-card{min-width:0;background:#fff;border-radius:12px;padding:1rem}
+.record-card h3{font-size:1rem;line-height:1.35;margin:0}
+.record-card p{margin:.25rem 0 0;color:#666}
+.record-top,.record-line{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.record-kicker,.record-line>span,.client-details span,.team-detail>span{font-size:.75rem;color:#666}
+.record-status{display:inline-flex;align-items:center;gap:.4rem;flex:none;font-size:.75rem;font-weight:700;white-space:nowrap}
+.record-status i{width:9px;height:9px;border-radius:50%;background:#18213A}
+.status-pending i,.status-overdue i{background:var(--orange)}
+.status-done i,.status-paid i{background:rgba(24,33,58,.4)}
+.record-line{margin-top:.9rem;font-size:.85rem}
+.record-progress{height:7px;background:var(--grey);border-radius:8px;overflow:hidden;margin-top:.85rem}
+.record-progress i{display:block;height:100%;background:var(--orange);border-radius:inherit}
+.client-mark,.team-mark,.service-mark{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;background:var(--cream);font-weight:700;color:var(--navy)}
+.client-record h3{margin-top:.8rem}.client-details{display:flex;justify-content:space-between;gap:.75rem;border-top:1px solid var(--grey);margin-top:.9rem;padding-top:.75rem}
+.client-details div{min-width:0}.client-details strong,.team-detail strong{display:block;font-size:.85rem;overflow-wrap:anywhere}
+.team-heading{display:flex;align-items:center;gap:.7rem}.team-heading>div{min-width:0;flex:1}.team-heading p,.service-heading p{font-size:.8rem}.team-detail{border-top:1px solid var(--grey);margin-top:.8rem;padding-top:.65rem}
+.service-heading{display:flex;align-items:center;gap:.7rem}.service-mark{border-radius:10px;background:var(--orange);color:#fff}.service-demand{margin-top:.9rem}
+.service-demand .record-line{margin:0}.service-record>.record-line{flex-wrap:wrap}
+.message-record{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.9rem}
+.message-copy{min-width:0}.message-copy .record-top>span{font-size:.75rem;color:#666;white-space:nowrap}.message-copy p{overflow-wrap:anywhere}
+.invoice-total{font:800 1.6rem var(--display);margin-top:.8rem;color:var(--navy)}
+.record-empty{grid-column:1/-1;background:#fff;border-radius:12px;padding:1.2rem;color:#666}
+.view-intro{margin:-.25rem 0 .8rem;color:#666;max-width:65ch}
+.mini{display:flex;gap:.8rem;align-items:center;margin-bottom:.8rem}.mini img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.ops-list{list-style:none;padding:0;margin:0}
+.ops-list li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--grey)}
+.ops-list li:last-child{border-bottom:0}
+.ops-list small{display:block;color:#666;margin-top:.15rem}
+.ops-tag{white-space:nowrap;font-size:.75rem;font-weight:700;padding:.2rem .55rem;border-radius:99px;background:var(--cream)}
+.ops-tag.hot{background:rgba(255,90,31,.16)}
+.ops-value{font-weight:700;white-space:nowrap}
+.prev{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}.prev img{width:100%;height:130px;object-fit:cover;border-radius:14px}
+.msg{padding:.7rem;border-radius:12px;cursor:pointer;margin-bottom:.4rem;background:var(--cream)}.msg.unread{border-left:4px solid var(--orange);font-weight:700}
+.tl{border-left:3px solid var(--cream);padding-left:1rem}.tl p{margin-bottom:.8rem;position:relative}.tl p::before{content:"";position:absolute;left:-1.5rem;top:.4rem;width:12px;height:12px;border-radius:50%;background:var(--orange)}
+.sw{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid var(--grey)}
+
+/* ===== Mobile ===== */
+@media(max-width:900px){
+  .side{visibility:hidden;transition:transform .35s,visibility 0s .35s}
+  .side.open{visibility:visible;transition:transform .35s,visibility 0s}
+  .prof span{display:none}.dmain{padding:1rem}.stat b{font-size:1.8rem}
+}
+@media(max-width:600px){
+  .records{grid-template-columns:1fr}
+  .message-record{grid-template-columns:auto minmax(0,1fr);align-items:start}
+  .message-record>.record-status{grid-column:2}
+  .message-copy .record-top{align-items:flex-start;flex-wrap:wrap}
+  .message-copy .record-top>span{white-space:normal}
+}
+.client-intro{max-width:60ch;color:#666;margin:-.2rem 0 1rem}
+.client-stats{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.client-stat{display:grid;gap:.3rem}.client-stat>span,.client-stat small{color:#666;font-size:.85rem}
+.client-stat strong{font:800 1.8rem var(--display)}
+.client-pulse{display:grid;gap:1.2rem}.client-pulse .record-line{margin:0 0 .4rem}
+.milestone-date{font:800 2.8rem/1 var(--display);margin:.6rem 0}.milestone-date span{font-size:1rem;color:#666}
+.client-project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1rem}
+.client-project-head{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem}.client-project h3{margin:.25rem 0;font-size:1.1rem}.client-project>p{margin:.4rem 0;color:#666}.client-project img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-top:1rem}
+.client-timeline p{padding-bottom:.5rem}.client-timeline strong{font-size:.95rem}.client-timeline small{color:#666}
+.client-message-list,.client-invoice-list{display:grid;gap:.75rem}.client-message-list .msg{margin:0;padding:1rem}.client-message-list .msg small{display:block;color:#666;margin:.2rem 0 .4rem}.client-message-list .msg p{margin:0;font-weight:400}
+.client-invoice{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:1rem}.client-invoice h3{font-size:1rem;margin:.2rem 0}.client-invoice>strong{font:800 1.2rem var(--display);white-space:nowrap}
+@media(max-width:900px){.dash.client .dmain{margin-left:0;max-width:none}}
+@media(max-width:600px){.client-invoice{grid-template-columns:minmax(0,1fr) auto}.client-invoice>.record-status{grid-column:1/-1}.client-project img{height:140px}}

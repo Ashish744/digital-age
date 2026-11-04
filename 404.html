@@ -1,0 +1,8 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="css/styles.css"><link rel="stylesheet" href="css/forms.css"><title>Page not found — Stackly</title></head><body>
+<main class="nf"><div><h1 id="n">404</h1><p>This page wandered off.</p>
+<div class="btns"><button class="btn" id="back" type="button">Back</button><a class="btn btn--fill" href="index.html">Home</a></div></div></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+document.getElementById('back').addEventListener('click',()=>{history.length>1?history.back():location.href='index.html'});
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){gsap.from('#n',{scale:.3,rotate:-10,duration:1.2,ease:'elastic.out(1,.5)'});gsap.to('#n',{y:-20,repeat:-1,yoyo:true,duration:2.5,ease:'sine.inOut'})}
+</script></body></html>

@@ -1,0 +1,97 @@
+/* ===== Inner pages: each page has its own look via body[data-page] ===== */
+.phero{min-height:80vh;display:flex;align-items:flex-end;padding:calc(var(--nav-h) + 40px) 0 60px;position:relative;overflow:hidden}
+.phero .bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.phero .wrap{position:relative;z-index:1}
+.ch{display:inline-block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);align-items:start}
+@media(max-width:800px){.two{grid-template-columns:1fr}}
+.pic{border-radius:var(--r);overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}
+.tag{display:inline-block;padding:.3rem .9rem;border-radius:99px;background:var(--cream);font-size:.8rem;font-weight:700}
+.dark{background:var(--navy);color:#fff}
+
+/* ABOUT — lavender, char reveal, sticky story, floating cards */
+[data-page=about] .phero{background:var(--cream)}
+[data-page=about] .sticky-pic{position:sticky;top:100px;height:70vh}
+.mv{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.mv div{padding:2rem;border-radius:var(--r);background:var(--orange)}.mv div:nth-child(2){background:var(--orange);color:#fff}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:2rem}
+.member img{aspect-ratio:3/4;object-fit:cover;border-radius:var(--r);width:100%;filter:grayscale(1);transition:filter .5s,transform .5s}
+.member:hover img{filter:none;transform:rotate(-2deg) scale(1.03)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
+.stats b{font:800 clamp(2.5rem,7vw,5rem) var(--display);color:var(--orange)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+
+/* SERVICES — navy, accordion + 3D flip cards */
+[data-page=services] .phero{background:var(--navy);color:#fff}
+[data-page=services] .phero .bg{opacity:.35}
+.acc{border-top:2px solid var(--navy)}
+.acc button{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 0;background:none;border:0;font:700 clamp(1.4rem,3vw,2.2rem) var(--display);color:inherit;cursor:pointer;text-align:left}
+.acc button i{transition:transform .4s;font-style:normal}.acc button[aria-expanded=true] i{transform:rotate(45deg)}
+.acc .body{height:0;overflow:hidden}.acc .inner{padding-bottom:2rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem}
+@media(max-width:800px){.acc .inner{grid-template-columns:1fr}}
+.flip{perspective:1000px;height:200px;cursor:pointer}.flip>div{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.flip.on>div{transform:rotateY(180deg)}.flip span{position:absolute;inset:0;display:grid;place-content:center;border-radius:var(--r);backface-visibility:hidden;font:700 1.4rem var(--display);text-align:center;padding:1rem}
+.flip span:first-child{background:var(--cream)}.flip span:last-child{background:var(--orange);color:#fff;transform:rotateY(180deg);font:500 1rem var(--body)}
+.line{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:2rem}
+.line::before{content:"";position:absolute;top:14px;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(var(--p,0));transform-origin:left}
+.line div{padding-top:2.2rem;position:relative}.line div::before{content:"";position:absolute;top:6px;width:18px;height:18px;border-radius:50%;background:var(--navy)}
+
+/* BLOG — lime editorial */
+[data-page=blog] .phero{background:var(--orange);min-height:60vh}
+.feat{display:grid;grid-template-columns:1.3fr 1fr;gap:0;border-radius:var(--r);overflow:hidden;background:#fff}
+.feat img{width:100%;height:100%;min-height:320px;object-fit:cover;transition:transform 1s}.feat:hover img{transform:scale(1.06)}
+.feat>div:last-child{padding:2rem}.feat .pic{border-radius:0}
+@media(max-width:800px){.feat{grid-template-columns:1fr}}
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:2rem 0}
+.filters button{padding:.6rem 1.2rem;border-radius:99px;border:2px solid var(--navy);background:none;cursor:pointer;font-weight:700}
+.filters button.on{background:var(--navy);color:#fff}
+.filters input{margin-left:auto;padding:.7rem 1.1rem;border-radius:99px;border:2px solid var(--grey);font:inherit;min-width:220px}
+.post{background:#fff;border-radius:var(--r);overflow:hidden;transition:transform .4s,box-shadow .4s}
+.post:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(24,33,58,.12)}
+.post img{height:210px;width:100%;object-fit:cover}.post div{padding:1.2rem}
+.post small{color:#666}.article{max-width:720px;margin:auto;font-size:1.15rem}.article p{margin:1rem 0}
+.empty{display:none;padding:2rem}
+
+/* CONTACT — orange, giant scrubbed type */
+[data-page=contact] .phero{background:var(--orange);color:#fff;min-height:55vh}
+.giant{font:800 18vw/1 var(--display);white-space:nowrap;color:rgba(255,255,255,.18);position:absolute;top:18%;left:0}
+.info p{margin:.6rem 0}.map{width:100%;height:320px;border:0;border-radius:var(--r);margin-top:1rem}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}@media(max-width:600px){.formgrid{grid-template-columns:1fr}}
+.meter{height:6px;background:var(--grey);border-radius:9px;overflow:hidden}.meter i{display:block;height:100%;width:0;background:var(--orange);transition:width .3s,background .3s}
+.auth__art{position:relative;overflow:hidden}.auth__art img{width:100%;height:100%;object-fit:cover}
+.curtain{position:absolute;inset:0;background:var(--navy)}
+
+/* ===== Full-screen hero redesign (about, services, blog, contact) ===== */
+.phero,[data-page=blog] .phero,[data-page=contact] .phero{min-height:100vh;min-height:100svh;align-items:center;padding:calc(var(--nav-h) + 30px) 0 90px}
+.hg{position:relative;z-index:2;width:min(1240px,92%);margin:auto;display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center}
+.lead{font-size:clamp(1rem,1.6vw,1.3rem);max-width:34ch;margin:1.2rem 0 1.8rem;opacity:.85}
+.collage{position:relative;height:min(68vh,560px)}
+.collage img{position:absolute;object-fit:cover;border-radius:var(--r);box-shadow:0 30px 60px rgba(24,33,58,.25);border:6px solid #fff}
+.collage .a{width:62%;height:72%;top:0;right:0;transform:rotate(4deg)}
+.collage .b{width:46%;height:44%;left:0;bottom:6%;transform:rotate(-6deg)}
+.collage .c{width:34%;height:34%;right:6%;bottom:0;transform:rotate(8deg)}
+.blob{position:absolute;border-radius:50%;z-index:0;pointer-events:none}
+.blob.b1{width:42vw;height:42vw;max-width:520px;max-height:520px;right:-8vw;top:8%;background:var(--orange);opacity:.9}
+.blob.b2{width:18vw;height:18vw;max-width:220px;max-height:220px;left:6%;bottom:8%;background:var(--orange)}
+.spin{position:absolute;right:4%;bottom:7%;width:clamp(90px,12vw,140px);color:var(--navy);animation:rot 16s linear infinite;z-index:3}
+@keyframes rot{to{transform:rotate(360deg)}}
+.hero-strip{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:1rem 0}
+/* about: lavender + orange blob, bold editorial */
+[data-page=about] .phero{background:linear-gradient(120deg,var(--cream) 55%,#F7F5F0)}
+/* services: dark photo hero with outlined feel */
+[data-page=services] .phero{align-items:center}.shade{position:absolute;inset:0;background:linear-gradient(100deg,var(--navy) 25%,rgba(24,33,58,.4));z-index:0}
+[data-page=services] .phero h1{max-width:12ch;text-shadow:0 0 0 #fff}
+[data-page=services] .spin{color:var(--orange)}
+.cta{display:flex;gap:1rem;flex-wrap:wrap}
+/* blog: lime editorial with tilted stack */
+[data-page=blog] .blob.b1{background:var(--cream)}[data-page=blog] .blob.b2{background:var(--orange)}
+[data-page=blog] .collage .a{left:0;right:auto;transform:rotate(-5deg)}[data-page=blog] .collage .b{left:auto;right:0;bottom:auto;top:18%;transform:rotate(6deg)}[data-page=blog] .collage .c{left:22%;right:auto;transform:rotate(-2deg)}
+[data-page=blog] .hero-strip{color:#fff}
+/* contact: orange, big email link, round photo */
+[data-page=contact] .blob.b1{background:var(--cream);opacity:.35}[data-page=contact] .blob.b2{background:var(--orange)}
+.bigmail{display:inline-block;margin-top:1.4rem;font:700 clamp(1.3rem,3.2vw,2.6rem) var(--display);border-bottom:3px solid var(--orange);padding-bottom:.2rem;transition:color .3s,border-color .3s}
+.bigmail:hover{color:var(--navy);border-color:var(--navy)}
+[data-page=contact] .spin{color:#fff}
+.collage.round{display:grid;place-items:center}.collage.round img{position:static;width:min(380px,80%);aspect-ratio:1;border-radius:50%;transform:none}
+@media(max-width:900px){.hg{grid-template-columns:1fr}.collage{height:300px}.phero{padding-bottom:110px}.spin{width:80px}}
+@media(prefers-reduced-motion:reduce){.spin{animation:none}}
