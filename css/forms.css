@@ -2,6 +2,7 @@
 .auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
 .auth__art{background:linear-gradient(135deg,var(--orange),var(--cream))}
 .auth__form{display:grid;place-content:center;padding:calc(var(--nav-h) + 30px) 8% 40px}
+.auth__form .logo{justify-self:start;margin-bottom:1.5rem}
 .field{margin-bottom:1.1rem}
 .field label{display:block;font-weight:700;margin-bottom:.3rem}
 .field input,.field select,.field textarea{width:100%;padding:.9rem 1rem;border:2px solid var(--grey);border-radius:14px;font:inherit;background:#fff}
