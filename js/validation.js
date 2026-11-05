@@ -11,10 +11,20 @@ const rules = {
   checked:  (v, f, el) => el.checked || 'Please accept to continue.'
 };
 
+const errorTimers = new WeakMap();
 function setError(el, msg) {
   const out = document.getElementById(el.id + '-err');
+  if (errorTimers.has(el)) clearTimeout(errorTimers.get(el));
   el.setAttribute('aria-invalid', !!msg);
-  if (out) out.textContent = msg || '';
+  if (out) {
+    out.textContent = msg || '';
+    if (msg) {
+      errorTimers.set(el, setTimeout(() => {
+        out.textContent = '';
+        errorTimers.delete(el);
+      }, 2000));
+    }
+  }
 }
 function check(el, form) {
   const r = rules[el.dataset.rule]; if (!r) return true;
@@ -39,6 +49,11 @@ document.querySelectorAll('form[data-validate]').forEach(form => {
         return;
       }
       if (document.body.dataset.page === 'contact') {
+        form.reset();
+        window.location.assign('404.html');
+        return;
+      }
+      if (document.body.dataset.page === 'create-account') {
         window.location.assign('login.html');
         return;
       }
